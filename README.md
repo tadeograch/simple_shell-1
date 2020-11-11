@@ -1,6 +1,7 @@
-Simple_shell
+Simple_shell project - Holberton School - COHORTE 13 - NOVEMBER 2020
 ---------------
 
+description aqui jeje
 
 
 Authors
