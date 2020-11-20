@@ -26,7 +26,7 @@ int pedircomando(char **env)
 {
 	size_t buffsize = 0;
 	int len;
-	char *buffer = NULL, **argv, *path;
+	char *buffer = NULL, **argv = NULL, *path = NULL;
 	pid_t child_pid;
 	int status;
 
@@ -71,7 +71,7 @@ char **create_tokens(char *line)
 {
 	unsigned int bufsize = 64, i = 0;
 	char **tokens = malloc(bufsize * sizeof(char *));
-	char *token;
+	char *token = NULL;
 
 	if (!tokens)
 	{
@@ -109,8 +109,8 @@ char *findcom(char *str, char **env)
 {
 	int res;
 	char *cat = NULL, *barra = "/";
-	char *tkn;
-	char *path;
+	char *tkn = NULL;
+	char *path = NULL;
 	struct stat st;
 
 	path = find_path(env);

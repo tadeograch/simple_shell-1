@@ -7,7 +7,7 @@
 char *find_path(char **env)
 {
 	char *path = "PATH=";
-	char *tmp;
+	char *tmp = NULL;
 	int i, j;
 
 	for (i = 0; env[i] != NULL; i++)
