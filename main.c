@@ -3,46 +3,119 @@
  * main - simple command interpreter
  * Return: 0;
  */
-void pedircomando(void);
-int main(void)
+int main(int ac, char **av, char **env)
 {
-	while (1)
-	{
-		write(1, "$ ", 2);
-		pedircomando();
-	}
+	(void)ac;
+	(void)av;
+        while (1)
+        {
+                write(1, "<3 ", 3);
+                pedircomando(env);
+        }
 	return (0);
 }
 /**
  * pedircomando - ask command
  */
-void pedircomando(void)
+int pedircomando(char **env)
 {
-	size_t buffsize = 0, len;
-	char *buffer = NULL, *argv[2];
-	pid_t child_pid;
-	int status;
+        size_t buffsize = 0;
+	int len;
+        char *buffer = NULL, **argv, *path;
+        pid_t child_pid;
+        int status;
 
-	/** write(1, "$ ", 2);*/
-	len = getline(&buffer, &buffsize, stdin);
-	buffer[len - 1] = '\0';
-	argv[0] = buffer;
-	argv[1] = NULL;
-	child_pid = fork();
-	if (child_pid == -1)
-	{
-		perror("Error:");
-		/**return (1);*/
-	}
-	if (child_pid == 0)
-	{
-		if (execve(argv[0], argv, NULL) == -1)
-		{
-			perror("Error");
-		}
-	}
-	else
-	{
-		wait(&status);
-	}
+        len = getline(&buffer, &buffsize, stdin);
+        if (len == -1)
+        {
+                if (len == EOF)
+                {
+                        return (0);
+                }
+                perror("");
+        }
+        buffer[len - 1] = '\0';
+        argv = lsh_split_line(buffer);
+        if (findbuilt_in(argv) == 1)
+        {
+                path = findcom(argv[0], env);
+	        child_pid = fork();
+                if (child_pid == -1)
+                {
+                        perror("Error:");
+                }
+                if (child_pid == 0)
+                {
+                        if (execve(argv[0], argv, env) == -1)
+                        {
+                                if (execve(path, argv, env) == -1)
+                                {
+                                     perror("ErrorA:");
+                                     exit(0);   
+                                }
+                        }
+                }
+                else
+                {
+                        wait(&status);
+                }
+        }
+        return 1;
+}
+
+char **lsh_split_line(char *line)
+{
+        unsigned int bufsize = 64, i = 0;
+        char **tokens = malloc(bufsize * sizeof(char*));
+        char *token;
+
+        if (!tokens)
+        {
+		perror("Error: ");
+                return (NULL);
+        }
+        token = strtok(line, " ");
+        while (token != NULL)
+        {
+                tokens[i] = token;
+                i++;
+                if (i >= bufsize)
+                {
+                        bufsize += 64;
+                        tokens = _realloc(tokens, (bufsize - 64) * sizeof(char*), bufsize * sizeof(char*));
+                        if (!tokens)
+                        {
+                                perror("Error");
+                                return (NULL);
+                        }
+                }
+                token = strtok(NULL, " ");
+        }
+        tokens[i] = NULL;
+        return (tokens);
+}
+
+char *findcom(char *str,char **env)
+{
+        int res;
+        char *cat = NULL, *barra = "/";
+        char *tkn;
+	char *path;
+        struct stat st;
+
+	path = find_path(env);
+        tkn = strtok(path, ":");
+        while (tkn != NULL)
+        {
+                tkn = str_concat(tkn, barra);
+		cat = str_concat(tkn, str);
+                res = stat(cat, &st);
+                if (res == 0)
+                {
+                        return (cat);
+                }
+                tkn = strtok(NULL, ":");
+        }
+	free(tkn);
+        return (NULL);
 }
