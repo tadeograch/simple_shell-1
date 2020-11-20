@@ -23,7 +23,7 @@ char *find_path(char **env)
 	tmp = malloc(strlen(env[i]) + 1);
 	if (tmp != NULL)
 	{
-		tmp = strcpy(tmp, env[i]);
+		tmp = _strcpy(tmp, env[i]);
 		return (tmp);
 	}
 	return (NULL);

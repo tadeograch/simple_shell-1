@@ -9,36 +9,37 @@
 
 char *str_concat(char *s1, char *s2)
 {
-        char *str;
-        int a, b, size1, size2;
-        if (s1 == NULL)
-        {
-                s1 = "";
-        }
-        if (s2 == NULL)
-        {
-                s2 = "";
-        }
-        for (size1 = 0; *(s1 + size1) != '\0'; size1++)
-        {
-        }
-        for (size2 = 0; *(s2 + size2) != '\0'; size2++)
-        {
-        }
-        str = (char *)malloc(sizeof(char) * (size1 + size2) + 1);
-        if (str == NULL)
+	char *str;
+	int a, b, size1, size2;
+
+	if (s1 == NULL)
 	{
-                return (NULL);
-        }
-        for (a = 0; a < size1; a++)
-        {
-                *(str + a) = *(s1 + a);
-        }
-        for (b = 0; b <= (size2); b++, a++)
-        {
-                *(str + a) = *(s2 + b);
-        }
-        return (str);
+		s1 = "";
+	}
+	if (s2 == NULL)
+	{
+		s2 = "";
+	}
+	for (size1 = 0; *(s1 + size1) != '\0'; size1++)
+	{
+	}
+	for (size2 = 0; *(s2 + size2) != '\0'; size2++)
+	{
+	}
+	str = (char *)malloc(sizeof(char) * (size1 + size2) + 1);
+	if (str == NULL)
+	{
+		return (NULL);
+	}
+	for (a = 0; a < size1; a++)
+	{
+		*(str + a) = *(s1 + a);
+	}
+	for (b = 0; b <= (size2); b++, a++)
+	{
+		*(str + a) = *(s2 + b);
+	}
+	return (str);
 }
 
 /**
@@ -51,7 +52,7 @@ char *str_concat(char *s1, char *s2)
 int _strcmp(char *s1, char *s2)
 {
 	int i;
-	
+
 	for (i = 0; s1[i] != '\0'; i++)
 	{
 		if (s1[i] == s2[i])
@@ -100,20 +101,20 @@ char *_strcpy(char *dest, char *src)
  */
 void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
 {
-        if (old_size == new_size)
-        {
-                return (ptr);
-        }
-        if (new_size == 0 && ptr != NULL)
-        {
-                free(ptr);
-                return (NULL);
-        }
-        if (new_size < old_size)
-        {
+	if (old_size == new_size)
+	{
+		return (ptr);
+	}
+	if (new_size == 0 && ptr != NULL)
+	{
 		free(ptr);
-        }
-        free(ptr);
-        ptr = malloc(new_size);
-        return (ptr);
+		return (NULL);
+	}
+	if (new_size < old_size)
+	{
+		free(ptr);
+	}
+	free(ptr);
+	ptr = malloc(new_size);
+	return (ptr);
 }

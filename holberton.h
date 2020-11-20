@@ -29,6 +29,8 @@ int pedircomando(char **env);
 char *findcom(char *str, char **env);
 char *find_path(char **env);
 char *str_concat(char *s1, char *s2);
+char *_strcpy(char *dest, char *src);
+int _strcmp(char *s1, char *s2);
 int _strlen(char *s);
 int findbuilt_in(char **argv);
 int fhelp(char **argv);

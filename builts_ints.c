@@ -15,7 +15,7 @@ int findbuilt_in(char **argv)
 	};
 	while (functions[i].name != NULL)
 	{
-		comp = strcmp(argv[0], functions[i].name);
+		comp = _strcmp(argv[0], functions[i].name);
 		if (comp == 0)
 		{
 			if (functions[i].f(argv) == -1)
