@@ -10,18 +10,23 @@
 #include <unistd.h>
 
 /*BUILTS_INTS*/
+/**
+ * struct built_in_s - Struct op base
+ * @name: shell command name
+ * @f: The function associated to the command.
+ */
 typedef struct built_in_s
 {
-    char *name;
-    int (*f)(char **argv);
-}built_in;
+	char *name;
+	int (*f)(char **argv);
+} built_in;
 
 /* FUNCTIONS*/
 
-char **lsh_split_line(char *line);
+char **create_tokens(char *line);
 void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size);
 int pedircomando(char **env);
-char *findcom(char *str,char **env);
+char *findcom(char *str, char **env);
 char *find_path(char **env);
 char *str_concat(char *s1, char *s2);
 int _strlen(char *s);
