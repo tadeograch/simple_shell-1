@@ -118,3 +118,23 @@ void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
 	ptr = malloc(new_size);
 	return (ptr);
 }
+
+/**
+ * _strchr - check the code for Holberton School students.
+ * @s: char pointer to be determined.
+ * @c: char to compare.
+ * Return: pointer or null.
+ */
+char *_strchr(char *s, char c)
+{
+	while (*s != c && *s != '\0')
+	{
+		s++;
+	}
+	if (*s == c)
+	{
+		return (s);
+	}
+	else
+		return (0);
+}

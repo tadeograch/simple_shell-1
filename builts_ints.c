@@ -42,7 +42,7 @@ int fhelp(char **argv)
 	{
 		if (execve("/bin/cat", argv, NULL) == -1)
 		{
-			perror("Error:");
+			perror("");
 		}
 		printf("a!\n");
 	}
@@ -56,8 +56,7 @@ int fhelp(char **argv)
 */
 int fexit(char **argv)
 {
-	(void)argv;
-	/*printf("Exit !\n");*/
+	free(argv);
 	exit(0);
 }
 /**
@@ -67,11 +66,15 @@ int fexit(char **argv)
 */
 int fcd(char **argv)
 {
-	if (argv[1] != NULL)
+	/* char *tmp, *cmd;
+
+	tmp = _strcpy(tmp, argv[1]);
+	cmd = _strchr(tmp, '\n');
+	if (tmp != NULL && cmd != NULL)
 	{
-		chdir(argv[1]);
+		*cmd = 0;
 	}
-	else
-	chdir("/home");
+	chdir(cmd); */
+	printf("cd %s\n", argv[1]);
 	return (0);
 }
