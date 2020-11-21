@@ -1,13 +1,11 @@
-Simple_shell project - Holberton School - COHORTE 13 - NOVEMBER 2020
----------------
+# Simple_shell project - Holberton School - COHORTE 13 - NOVEMBER 2020
 
-description aqui jeje
+## How to use
 
+descripcion aqui
 
-Authors
----------------
+## Authors
 Facundo Diaz and Cecilia Giudice
 
-Date
----------------
-11/11/2020 start
+## Date
+11/11/2020 start aaaa
