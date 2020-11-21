@@ -26,6 +26,5 @@ char *find_path(char **env)
 		tmp = _strcpy(tmp, env[i]);
 		return (tmp);
 	}
-	free(tmp);
 	return (NULL);
 }

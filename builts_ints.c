@@ -4,7 +4,7 @@
 * @argv: arguments
 * Return: result 0 or -1
 */
-int findbuilt_in(char **argv, char *token)
+int findbuilt_in(char **argv)
 {
 	int comp, i = 0;
 
@@ -54,12 +54,11 @@ int fhelp(char **argv)
 * @argv: arguments
 * Return: result...
 */
-int fexit(char **tokens)
+int fexit(char **argv)
 {
-	free(tokens);
+	free(argv);
 	exit(0);
 }
-
 /**
 * fcd - command cd function
 * @argv: arguments

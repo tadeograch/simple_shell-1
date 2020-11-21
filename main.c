@@ -10,11 +10,9 @@ int main(int ac, char **av, char **env)
 {
 	(void)ac;
 	(void)av;
-
 	while (1)
 	{
-		if (isatty(STDOUT_FILENO))
-			write(STDOUT_FILENO, "<3 ", 3);
+		write(1, "<3 ", 3);
 		pedircomando(env);
 	}
 	return (0);
@@ -27,13 +25,26 @@ int main(int ac, char **av, char **env)
 int pedircomando(char **env)
 {
 	size_t buffsize = 0;
-	ssize_t len;
+	int len;
 	char *buffer = NULL, **argv = NULL, *path = NULL;
+	pid_t child_pid;
+	int status;
 
 	len = getline(&buffer, &buffsize, stdin);
-	_endofilee(buffer, len);
-	argv = create_tokens(buffer, env);
-	/*if (findbuilt_in(argv) == 1)
+	if (len == -1)
+	{
+		if (len == EOF)
+		{
+			perror("");
+			return (0);
+		}
+		perror("");	
+	}
+	if (len == 1)
+		return (0);	
+	buffer[len - 1] = '\0';
+	argv = create_tokens(buffer);
+	if (findbuilt_in(argv) == 1)
 	{
 		path = findcom(argv[0], env);
 		child_pid = fork();
@@ -52,8 +63,10 @@ int pedircomando(char **env)
 		}
 		else
 			wait(&status);
-	}*/
+	}
+	free(buffer);
 	free(argv);
+	free(path);
 	return (1);
 }
 /**
@@ -61,14 +74,11 @@ int pedircomando(char **env)
  * @line: line received from main.
  * Return: tokens array;
  */
-char **create_tokens(char *line, char **env)
+char **create_tokens(char *line)
 {
 	unsigned int bufsize = 64, i = 0;
 	char **tokens = malloc(bufsize * sizeof(char *));
 	char *token = NULL;
-	char *path = NULL;
-	pid_t child_pid;
-	int status;
 
 	if (!tokens)
 	{
@@ -76,13 +86,11 @@ char **create_tokens(char *line, char **env)
 		return (NULL);
 	}
 	token = strtok(line, " ");
-	char *token_two = token;
-
 	while (token != NULL)
 	{
 		tokens[i] = token;
 		i++;
-		/*if (i >= bufsize)
+		if (i >= bufsize)
 		{
 			bufsize += 64;
 			tokens = _realloc(tokens, (bufsize - 64) * sizeof(char *),
@@ -92,33 +100,10 @@ char **create_tokens(char *line, char **env)
 				perror("");
 				return (NULL);
 			}
-		}*/
+		}
 		token = strtok(NULL, " ");
 	}
 	tokens[i] = NULL;
-
-	if (findbuilt_in(tokens, token_two) == 1)
-	{
-		path = findcom(tokens[0], env);
-		child_pid = fork();
-		if (child_pid == -1)
-			perror("");
-		if (child_pid == 0)
-		{
-			if (execve(tokens[0], tokens, env) == -1)
-			{
-				if (execve(path, tokens, env) == -1)
-				{
-					perror("");
-					exit(0);
-				}
-			}
-		}
-		else
-			wait(&status);
-	}
-	free(line);
-	free(path);
 	return (tokens);
 }
 /**
@@ -144,8 +129,6 @@ char *findcom(char *str, char **env)
 		res = stat(cat, &st);
 		if (res == 0)
 		{
-			free(tkn);
-			free(path);
 			return (cat);
 		}
 		tkn = strtok(NULL, ":");
@@ -154,21 +137,3 @@ char *findcom(char *str, char **env)
 	free(path);
 	return (NULL);
 }
-
-int _endofilee(char *buffer, int len)
-{
-
-if (len == EOF)
-	{
-		perror("");
-		free(buffer);
-		return (0);
-	}
-	if (len == 1)
-	{
-		free(buffer);
-		return(0);
-	}	
-	buffer[len - 1] = '\0';
-	return (1);
-	}

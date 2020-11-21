@@ -1,6 +1,6 @@
 #ifndef HOLBERTON_H
 #define HOLBERTON_H
-/*LIBRARIES*/
+/*LIBRARYS*/
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
@@ -8,7 +8,6 @@
 #include <sys/wait.h>
 #include <sys/stat.h>
 #include <unistd.h>
-#include <errno.h>
 
 /*BUILTS_INTS*/
 /**
@@ -19,12 +18,12 @@
 typedef struct built_in_s
 {
 	char *name;
-	int (*f)();
+	int (*f)(char **argv);
 } built_in;
 
 /* FUNCTIONS*/
 
-char **create_tokens(char *line, char **env);
+char **create_tokens(char *line);
 void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size);
 int pedircomando(char **env);
 char *findcom(char *str, char **env);
@@ -35,9 +34,9 @@ int _strcmp(char *s1, char *s2);
 int _strlen(char *s);
 char *_strchr(char *s, char c);
 void free_willy(char **ptr, char *ptr2);
-int findbuilt_in(char **argv, char *token);
+int findbuilt_in(char **argv);
 int fhelp(char **argv);
 int fexit(char **argv);
-int _endofilee(char *buffer, int len);
+
 
 #endif
