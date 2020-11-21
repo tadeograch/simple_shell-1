@@ -118,10 +118,10 @@ void execute_5 (char *path, char **args, char **env)
 		}
 }
 
-/*void controlcfun(int a)
+void controlcfun(int a)
 {
     (void)a;
     signal(SIGINT, controlcfun);
     write(1, "\n", 1);
-    0_prompt();
-}*/
+    prompt_0();
+}

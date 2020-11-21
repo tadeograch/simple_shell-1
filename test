@@ -1,0 +1,19 @@
+#!/bin/bash
+echo -e "test ls \n"
+ls
+echo -e "\n test ls -l"
+ls -l
+echo -e "\n test ls -la"
+ls -la
+echo -e "\n test ls -lah"
+ls -lah
+echo -e "\n test ld"
+ld
+echo -e "\n expected output \n ld: no input files"
+echo -e "\n test pwd"
+pwd
+echo -e "\n test env"
+env
+echo -e "\n test printenv"
+printenv
+echo -e "\n----fin test----"
