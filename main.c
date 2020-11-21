@@ -16,9 +16,13 @@ int main(int ac, char **av, char **env)
 	(void)av;
 
 	signal(SIGINT, controlcfun);
+	
 	while (1)
 	{
-		prompt_0();
+		if (isatty(0))
+		{
+			prompt_0();
+		}
 		buffer = getline_1();
 		if (buffer[0] != ' ' && buffer[0] != '\0')
 		{
