@@ -1,29 +1,38 @@
 #include "holberton.h"
-
-void prompt_0 (void)
+/**
+ * prompt_0 - execute prompt
+ *
+ * Return: void
+ */
+void prompt_0(void)
 {
-    write(1, "<3 ", 3);
+	write(1, "<3 ", 3);
 }
 
-char *getline_1 ()
+/**
+ * getline_1 - get line from user
+ *
+ * Return: buffer
+ */
+char *getline_1()
 {
-    int len = 0;
-    size_t buffsize = 0;
-    char *buffer = NULL;
+	int len = 0;
+	size_t buffsize = 0;
+	char *buffer = NULL;
 
-    len = getline(&buffer, &buffsize, stdin);
+	len = getline(&buffer, &buffsize, stdin);
 	if (len == -1)
 	{
 		if (len == EOF)
 			return (0);
 		perror("");
 	}
-    buffer[len - 1] = '\0';
-    return (buffer);
+	buffer[len - 1] = '\0';
+	return (buffer);
 }
 
 /**
- * 2_split_line - separates command line
+ * split_line_2 - separates command line
  * @buffer: buffer received from getline.
  * Return: tokens array;
  */
@@ -61,10 +70,10 @@ char **split_line_2(char *buffer)
 }
 
 /**
- * 4_getpath - function that finds specific command
+ * getpath_4 - function that finds specific command
  * @str: path line as string
  * @env: environment variable
- * Return: tkn;
+ * Return: cat or NULL;
  */
 char *getpath_4(char *str, char **env)
 {
@@ -91,12 +100,19 @@ char *getpath_4(char *str, char **env)
 	return (NULL);
 }
 
-void execute_5 (char *path, char **args, char **env)
+/**
+ * execute_5 - function that finds specific command
+ * @path: path line as string
+ * @args: user input
+ * @env: environment variables
+ * Return: void;
+ */
+void execute_5(char *path, char **args, char **env)
 {
-    pid_t child_pid = 0;
-    int status;
+	pid_t child_pid = 0;
+	int status;
 
-    child_pid = fork();
+	child_pid = fork();
 		if (child_pid == -1)
 			perror("");
 		if (child_pid == 0)
@@ -116,12 +132,4 @@ void execute_5 (char *path, char **args, char **env)
 			free(path);
 			free(args);
 		}
-}
-
-void controlcfun(int a)
-{
-    (void)a;
-    signal(SIGINT, controlcfun);
-    write(1, "\n", 1);
-    prompt_0();
 }

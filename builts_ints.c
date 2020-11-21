@@ -1,6 +1,6 @@
 #include "holberton.h"
 /**
-* findbuilt_in - find builts in
+* find_built_in_3 - find builts in
 * @args: arguments
 * @env: environment variables
 * Return: result 0 or -1
