@@ -18,7 +18,7 @@
 typedef struct built_in_s
 {
 	char *name;
-	int (*f)(char **argv);
+	int (*f)(char **argv, char **env);
 } built_in;
 
 /* FUNCTIONS*/
@@ -26,15 +26,16 @@ typedef struct built_in_s
 void prompt_0(void);
 char  *getline_1();
 char **split_line_2(char *buffer);
-int find_built_in_3(char **args);
+int find_built_in_3(char **args, char **env);
 char *getpath_4(char *str, char **env);
 void execute_5 (char *path, char **args, char **env);
 
 void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size);
 char *str_concat(char *s1, char *s2);
 int _strlen(char *s);
-int fhelp(char **args);
-int fexit(char **args);
+int fhelp(char **args, char **env);
+int fexit(char **args, char **env);
+int fcd(char **argv, char **env);
 char *find_path(char **env);
 void controlcfun(int a);
 

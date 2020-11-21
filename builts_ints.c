@@ -1,16 +1,18 @@
 #include "holberton.h"
 /**
 * findbuilt_in - find builts in
-* @argv: arguments
+* @args: arguments
+* @env: environment variables
 * Return: result 0 or -1
 */
-int find_built_in_3(char **args)
+int find_built_in_3(char **args, char **env)
 {
 	int comp, i = 0;
 
 	built_in functions[] = {
 		{"exit", fexit},
 		{"help", fhelp},
+		{"cd", fcd},
 		{NULL, NULL}
 	};
 	while (functions[i].name != NULL)
@@ -18,7 +20,7 @@ int find_built_in_3(char **args)
 		comp = strcmp(args[0], functions[i].name);
 		if (comp == 0)
 		{
-			if (functions[i].f(args) == -1)
+			if (functions[i].f(args, env) == -1)
 			{
 				return (-1);
 			}
@@ -33,11 +35,13 @@ int find_built_in_3(char **args)
 }
 /**
 * fhelp - command help function
-* @argv: arguments
+* @args: arguments
+* @env: environment variables
 * Return: result 0 or -1
 */
-int fhelp(char **args)
+int fhelp(char **args, char **env)
 {
+	(void)env;
 	if (args[1] != NULL)
 	{
 		if (execve("/bin/cat", args, NULL) == -1)
@@ -51,27 +55,57 @@ int fhelp(char **args)
 }
 /**
 * fexit - command exit function
-* @argv: arguments
+* @args: arguments
+* @env: environment variables
 * Return: result...
 */
-int fexit(char **args)
+int fexit(char **args, char **env)
 {
 	(void)args;
+	(void)env;
 	/*printf("Exit !\n");*/
 	exit(0);
 }
 /**
 * fcd - command cd function
-* @argv: arguments
+* @args: arguments
+* @env: environment variables
 * Return: result 0
 */
-int fcd(char **args)
+int fcd(char **args, char **env)
 {
-	if (args[1] != NULL)
+	char *path = "HOME=";
+	char *tmp = NULL;
+	int i, j, k;
+
+	if (args[1] == NULL)
 	{
-		chdir(args[1]);
+		for (i = 0; env[i] != NULL; i++)
+		{
+			for (j = 0; j < 5; j++)
+			{
+				if (path[j] != env[i][j])
+					break;
+			}
+			if (j == 5)
+				break;
+		}
+		tmp = malloc(strlen(env[i]) + 1);
+		if (tmp == NULL)
+		{
+			perror("");
+		}
+		for (k = 0; env[i][j] != '\0'; j++, k++)
+		{
+			tmp[k] = env[i][j];
+		}
+		if (chdir(tmp) != 0)
+			perror("");
+
 	}
-	else
-	chdir("/home");
-	return (0);
+	else if (chdir(args[1]) != 0)
+	{
+			perror("");
+	}
+		return (0);
 }

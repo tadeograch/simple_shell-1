@@ -17,7 +17,9 @@ int main(int ac, char **av, char **env)
         if (/*buffer[0] != '\n' && */buffer[0] != '\0')
         {
         args = split_line_2(buffer);
-        built_in = find_built_in_3(args);
+        built_in = find_built_in_3(args, env);
+		if (built_in == 0)
+			continue;
         path = getpath_4(args[0], env);
         execute_5 (path, args, env); 
         }

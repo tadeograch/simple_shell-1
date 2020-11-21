@@ -5,7 +5,7 @@ void prompt_0 (void)
     write(1, "<3 ", 3);
 }
 
-char  *getline_1 ()
+char *getline_1 ()
 {
     int len = 0;
     size_t buffsize = 0;
