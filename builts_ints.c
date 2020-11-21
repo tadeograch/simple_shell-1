@@ -15,7 +15,11 @@ int find_built_in_3(char **args)
 	};
 	while (functions[i].name != NULL)
 	{
+<<<<<<< HEAD
 		comp = strcmp(args[0], functions[i].name);
+=======
+		comp = _strcmp(argv[0], functions[i].name);
+>>>>>>> 786f3e8f178cdd8f670d919b46d085d98b3f9546
 		if (comp == 0)
 		{
 			if (functions[i].f(args) == -1)
@@ -56,8 +60,12 @@ int fhelp(char **args)
 */
 int fexit(char **args)
 {
+<<<<<<< HEAD
 	(void)args;
 	/*printf("Exit !\n");*/
+=======
+	free(argv);
+>>>>>>> 786f3e8f178cdd8f670d919b46d085d98b3f9546
 	exit(0);
 }
 /**
@@ -67,11 +75,21 @@ int fexit(char **args)
 */
 int fcd(char **args)
 {
+<<<<<<< HEAD
 	if (args[1] != NULL)
 	{
 		chdir(args[1]);
+=======
+	/* char *tmp, *cmd;
+
+	tmp = _strcpy(tmp, argv[1]);
+	cmd = _strchr(tmp, '\n');
+	if (tmp != NULL && cmd != NULL)
+	{
+		*cmd = 0;
+>>>>>>> 786f3e8f178cdd8f670d919b46d085d98b3f9546
 	}
-	else
-	chdir("/home");
+	chdir(cmd); */
+	printf("cd %s\n", argv[1]);
 	return (0);
 }

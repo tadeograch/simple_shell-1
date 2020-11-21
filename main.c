@@ -26,7 +26,7 @@ int pedircomando(char **env)
 {
 	size_t buffsize = 0;
 	int len;
-	char *buffer = NULL, **argv, *path;
+	char *buffer = NULL, **argv = NULL, *path = NULL;
 	pid_t child_pid;
 	int status;
 
@@ -34,9 +34,14 @@ int pedircomando(char **env)
 	if (len == -1)
 	{
 		if (len == EOF)
+		{
+			perror("");
 			return (0);
-		perror("");
+		}
+		perror("");	
 	}
+	if (len == 1)
+		return (0);	
 	buffer[len - 1] = '\0';
 	argv = create_tokens(buffer);
 	if (findbuilt_in(argv) == 1)
@@ -44,14 +49,14 @@ int pedircomando(char **env)
 		path = findcom(argv[0], env);
 		child_pid = fork();
 		if (child_pid == -1)
-			perror("Error:");
+			perror("");
 		if (child_pid == 0)
 		{
 			if (execve(argv[0], argv, env) == -1)
 			{
 				if (execve(path, argv, env) == -1)
 				{
-					perror("ErrorA:");
+					perror("");
 					exit(0);
 				}
 			}
@@ -59,7 +64,9 @@ int pedircomando(char **env)
 		else
 			wait(&status);
 	}
-	/* meter funcion free memory aca prro */
+	free(buffer);
+	free(argv);
+	free(path);
 	return (1);
 }
 /**
@@ -71,11 +78,11 @@ char **create_tokens(char *line)
 {
 	unsigned int bufsize = 64, i = 0;
 	char **tokens = malloc(bufsize * sizeof(char *));
-	char *token;
+	char *token = NULL;
 
 	if (!tokens)
 	{
-		perror("Error: ");
+		perror("");
 		return (NULL);
 	}
 	token = strtok(line, " ");
@@ -90,7 +97,7 @@ char **create_tokens(char *line)
 			bufsize * sizeof(char *));
 			if (!tokens)
 			{
-				perror("Error");
+				perror("");
 				return (NULL);
 			}
 		}
@@ -109,8 +116,8 @@ char *findcom(char *str, char **env)
 {
 	int res;
 	char *cat = NULL, *barra = "/";
-	char *tkn;
-	char *path;
+	char *tkn = NULL;
+	char *path = NULL;
 	struct stat st;
 
 	path = find_path(env);
@@ -127,5 +134,6 @@ char *findcom(char *str, char **env)
 		tkn = strtok(NULL, ":");
 	}
 	free(tkn);
+	free(path);
 	return (NULL);
 }
