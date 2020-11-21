@@ -2,12 +2,12 @@
 
 int main(int ac, char **av, char **env)
 {
-    (void)ac;
-    (void)av;
     char *buffer = NULL;
     char **args = NULL;
     int built_in = 0;
     char *path = NULL;
+    (void)ac;
+    (void)av;
 
     signal(SIGINT, controlcfun);
     while (1)
@@ -21,7 +21,7 @@ int main(int ac, char **av, char **env)
 		if (built_in == 0)
 			continue;
         path = getpath_4(args[0], env);
-        execute_5 (path, args, env); 
+        execute_5 (path, args, env);
         }
         else
         {

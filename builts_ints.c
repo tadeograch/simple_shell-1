@@ -103,7 +103,8 @@ int fcd(char **args, char **env)
 			perror("");
 
 	}
-	else if (chdir(args[1]) != 0)
+	else
+		if (chdir(args[1]) != 0)
 	{
 			perror("");
 	}
