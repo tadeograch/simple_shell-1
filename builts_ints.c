@@ -13,6 +13,7 @@ int find_built_in_3(char **args, char **env)
 		{"exit", fexit},
 		{"help", fhelp},
 		{"cd", fcd},
+		{"env", fenv},
 		{NULL, NULL}
 	};
 	while (functions[i].name != NULL)

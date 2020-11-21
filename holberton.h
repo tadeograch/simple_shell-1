@@ -36,6 +36,7 @@ int _strlen(char *s);
 int fhelp(char **args, char **env);
 int fexit(char **args, char **env);
 int fcd(char **argv, char **env);
+int fenv(char **args, char **env);
 char *find_path(char **env);
 void controlcfun(int a);
 
