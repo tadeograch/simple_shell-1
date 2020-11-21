@@ -32,21 +32,11 @@ void execute_5 (char *path, char **args, char **env);
 
 void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size);
 char *str_concat(char *s1, char *s2);
-char *_strcpy(char *dest, char *src);
-int _strcmp(char *s1, char *s2);
 int _strlen(char *s);
-<<<<<<< HEAD
 int fhelp(char **args);
 int fexit(char **args);
 char *find_path(char **env);
 void controlcfun(int a);
-=======
-char *_strchr(char *s, char c);
-void free_willy(char **ptr, char *ptr2);
-int findbuilt_in(char **argv);
-int fhelp(char **argv);
-int fexit(char **argv);
->>>>>>> 786f3e8f178cdd8f670d919b46d085d98b3f9546
 
 
 #endif
