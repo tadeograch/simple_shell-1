@@ -1,6 +1,4 @@
-# Foobar
-
-Simple_shell project - Holberton School - COHORTE 13 - NOVEMBER 2020
+# Simple_shell project - Holberton School - COHORTE 13 - NOVEMBER 2020
 
 ## How to use
 
