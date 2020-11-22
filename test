@@ -1,19 +1,19 @@
 #!/bin/bash
-echo -e "test ls \n"
+echo -e "\n-----------------------------\ntest ls\n-----------------------------\\n"
 ls
-echo -e "\n test ls -l"
+echo -e "\n-----------------------------\\ntest ls -l\n-----------------------------\\n"
 ls -l
-echo -e "\n test ls -la"
+echo -e "\n-----------------------------\\ntest ls -la\n-----------------------------\\n"
 ls -la
-echo -e "\n test ls -lah"
+echo -e "\n-----------------------------\\ntest ls -lah\n-----------------------------\\n"
 ls -lah
-echo -e "\n test ld"
+echo -e "\n-----------------------------\\ntest ld\n-----------------------------\\n"
 ld
-echo -e "\n expected output \n ld: no input files"
-echo -e "\n test pwd"
+echo -e "\n-----------------------------\\nexpected output \n ld: no input files\n-----------------------------\\n"
+echo -e "\n-----------------------------\ntest pwd\n-----------------------------\\n"
 pwd
-echo -e "\n test env"
+echo -e "\n-----------------------------\ntest env\n-----------------------------\n"
 env
-echo -e "\n test printenv"
+echo -e "\n-----------------------------\ntest printenv\n-----------------------------\n"
 printenv
-echo -e "\n----fin test----"
+echo -e "\n----END OF TEST----\n"
