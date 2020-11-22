@@ -39,6 +39,7 @@ int fcd(char **argv, char **env);
 int fenv(char **args, char **env);
 char *find_path(char **env);
 void controlcfun(int a);
+int _strcmp(char *s1, char *s2);
 
 
 #endif

@@ -23,6 +23,7 @@ void controlcfun(int a)
 int fenv(char **args, char **env)
 {
 	int i, len = 0;
+	(void)args;
 
 	for (i = 0; env[i] != NULL; i++)
 	{
