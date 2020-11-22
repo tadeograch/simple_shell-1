@@ -25,6 +25,7 @@ char *getline_1()
 	{
 		if (len == EOF)
 		{
+			free(buffer);
 			exit (0);
 		}
 		perror("");
@@ -98,7 +99,6 @@ char *getpath_4(char *str, char **env)
 		}
 		tkn = strtok(NULL, ":");
 	}
-	free(tkn);
 	return (NULL);
 }
 
@@ -131,7 +131,6 @@ void execute_5(char *path, char **args, char **env)
 		else
 		{
 			wait(&status);
-			free(path);
-			free(args);
+			
 		}
 }
