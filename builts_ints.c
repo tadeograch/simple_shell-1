@@ -18,7 +18,7 @@ int find_built_in_3(char **args, char **env)
 	};
 	while (functions[i].name != NULL)
 	{
-		comp = strcmp(args[0], functions[i].name);
+		comp = _strcmp(args[0], functions[i].name);
 		if (comp == 0)
 		{
 			if (functions[i].f(args, env) == -1)
@@ -62,9 +62,9 @@ int fhelp(char **args, char **env)
 */
 int fexit(char **args, char **env)
 {
-	(void)args;
 	(void)env;
-	/*printf("Exit !\n");*/
+	(void)args;
+
 	exit(0);
 }
 /**
@@ -91,7 +91,7 @@ int fcd(char **args, char **env)
 			if (j == 5)
 				break;
 		}
-		tmp = malloc(strlen(env[i]) + 1);
+		tmp = malloc(_strlen(env[i]) + 1);
 		if (tmp == NULL)
 		{
 			perror("");

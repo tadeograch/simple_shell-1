@@ -19,7 +19,7 @@ int main(int ac, char **av, char **env)
 	
 	while (1)
 	{
-		if (isatty(0))
+		if (isatty(STDIN_FILENO))
 		{
 			prompt_0();
 		}

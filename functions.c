@@ -24,7 +24,9 @@ char *getline_1()
 	if (len == -1)
 	{
 		if (len == EOF)
-			return (0);
+		{
+			exit (0);
+		}
 		perror("");
 	}
 	buffer[len - 1] = '\0';
