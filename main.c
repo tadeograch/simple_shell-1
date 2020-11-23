@@ -29,12 +29,30 @@ int main(int ac, char **av, char **env)
 			args = split_line_2(buffer);
 			built_in = find_built_in_3(args, env);
 			if (built_in == 0)
+			{
 				continue;
-			path = getpath_4(args[0], env);
-			execute_5(path, args, env);
+			}
+			if (args[0][0] != '/' && args[0][0] != '.')
+			{
+				path = getpath_4(args[0], env);
+				if (path == NULL)
+				{
+					free(args);
+					continue;
+				}
+				execute_5(path, args, env);
+				free(path);
+			}
+			else
+			{
+				path = args[0];
+				execute_5(path, args, env);
+			}
+			free(buffer);
 		}
 		else
 		{
+			free(buffer);
 			continue;
 		}
 	}

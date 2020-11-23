@@ -107,6 +107,8 @@ char *getpath_4(char *str, char **env)
 		}
 		tkn = strtok(NULL, ":");
 	}
+	write(STDOUT_FILENO, str, _strlen(str));
+	write(STDOUT_FILENO, ": command not found\n", 20);
 	free(tkn);
 	free(path);
 	free(str);
@@ -139,7 +141,6 @@ void execute_5(char *path, char **args, char **env)
 					perror("");	
 					exit(0);
 				}
-				perror("");
 			}
 		}
 		else

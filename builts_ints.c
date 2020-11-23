@@ -106,11 +106,13 @@ int fcd(char **args, char **env)
 		}
 	}
 	else
+	{
 		if (chdir(args[1]) != 0)
 		{
 			free(tmp);
 			perror("");
 		}
+	}
 		free(args);
 		return (0);
 }
