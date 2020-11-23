@@ -68,6 +68,7 @@ char **split_line_2(char *buffer)
 		}
 		token = strtok(NULL, " ");
 	}
+	free(token);
 	tokens[i] = NULL;
 	return (tokens);
 }
@@ -80,7 +81,7 @@ char **split_line_2(char *buffer)
  */
 char *getpath_4(char *str, char **env)
 {
-	int res;
+	int res = 0;
 	char *cat = NULL, *barra = "/";
 	char *tkn = NULL;
 	char *path = NULL;
@@ -95,10 +96,20 @@ char *getpath_4(char *str, char **env)
 		res = stat(cat, &st);
 		if (res == 0)
 		{
+			free(tkn);
+			free(path);
 			return (cat);
+		}
+		else
+		{
+			free(tkn);
+			free(cat);
 		}
 		tkn = strtok(NULL, ":");
 	}
+	free(tkn);
+	free(path);
+	free(str);
 	return (NULL);
 }
 
@@ -123,14 +134,17 @@ void execute_5(char *path, char **args, char **env)
 			{
 				if (execve(path, args, env) == -1)
 				{
-					perror("");
+					free(args);
+					free(path);
+					perror("");	
 					exit(0);
 				}
+				perror("");
 			}
 		}
 		else
 		{
 			wait(&status);
-			
+			free(args);
 		}
 }

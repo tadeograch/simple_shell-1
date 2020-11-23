@@ -63,8 +63,7 @@ int fhelp(char **args, char **env)
 int fexit(char **args, char **env)
 {
 	(void)env;
-	(void)args;
-
+	free_double(args);
 	exit(0);
 }
 /**
@@ -101,13 +100,17 @@ int fcd(char **args, char **env)
 			tmp[k] = env[i][j];
 		}
 		if (chdir(tmp) != 0)
+		{	
+			free(tmp);
 			perror("");
-
+		}
 	}
 	else
 		if (chdir(args[1]) != 0)
-	{
+		{
+			free(tmp);
 			perror("");
-	}
+		}
+		free(args);
 		return (0);
 }

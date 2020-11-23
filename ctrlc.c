@@ -23,7 +23,6 @@ void controlcfun(int a)
 int fenv(char **args, char **env)
 {
 	int i, len = 0;
-	(void)args;
 
 	for (i = 0; env[i] != NULL; i++)
 	{
@@ -31,5 +30,6 @@ int fenv(char **args, char **env)
 		write(1, env[i], len);
 		write(1, "\n", 1);
 	}
+	free_double(args);
 	return (0);
 }

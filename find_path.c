@@ -1,15 +1,17 @@
 #include "holberton.h"
+
 /**
 * find_path - search value of variable PATH
 * @env: environ received
 * Return: value of variable PATH
 */
-char *find_path(char **env)
+/*char *find_path(char **env)
 {
-	char *path = "PATH=";
-	char *tmp;
-	int i, j;
+	char *path = NULL;
+	char *tmp = NULL;
+	int i = 0, j = 0;
 
+	path = "PATH=";
 	for (i = 0; env[i] != NULL; i++)
 	{
 		for (j = 0; j < 5; j++)
@@ -20,11 +22,48 @@ char *find_path(char **env)
 		if (j == 5)
 			break;
 	}
-	tmp = malloc(strlen(env[i]) + 1);
+	tmp = malloc(_strlen(env[i]) + 1);
 	if (tmp != NULL)
 	{
-		tmp = strcpy(tmp, env[i]);
+		tmp = _strcpy(tmp, env[i]);
 		return (tmp);
 	}
 	return (NULL);
+}*/
+
+char *find_path(char **env)
+{
+	char *path = NULL, *tmp = NULL;
+	int i, len = 5;
+
+	path = "PATH=";
+	for (i = 0; env[i] != NULL; i++)
+	{
+		if (_strncmp(path, env[i], len) == 0)
+		{
+			break;
+		}
+	}
+	tmp = malloc(_strlen(env[i]) + 1);
+	if (tmp != NULL)
+	{
+		tmp = _strcpy(tmp, env[i]);
+		return (tmp);
+	}
+	free(tmp);
+	return (NULL);
+
+}
+
+int _strncmp(char *s1, char *s2, int len)
+{
+	int a = 0;
+
+	while (a < len)
+	{
+		if (s1[a] != s2[a])
+			return (s1[a] - s2[a]);
+		a++;
+	}
+	return (0);
 }
