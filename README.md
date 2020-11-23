@@ -25,6 +25,10 @@ Then you can start inserting commands followed by an enter, as the examples belo
 ```
 To finish using our shell, you must insert the command "exit"
 
+```
+<3 exit
+```
+
 ## File contents
 |   **File**   |   **Description**   |
 | -------------- | --------------------- |
