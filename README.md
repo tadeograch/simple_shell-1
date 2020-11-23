@@ -32,16 +32,16 @@ To finish using our shell, you must insert the command "exit"
 ## File contents
 |   **File**   |   **Description**   |
 | -------------- | --------------------- |
-| main.c | the main function |
-| holberton.h | header file |
-| functions.c | functions generals |
-| aux_funcs.c | string management |
-| builts_int.c | funcions built ints |
-| ctrlc.c | control c function |
-| free_double.c | free to double pointers |
-| find_path.c | looks for the PATH |
-| AUTHORS | creators |
-| man_1_simple_shell | manual |
+| main.c | The main function |
+| holberton.h | Header file |
+| functions.c | Functions generals |
+| aux_funcs.c | String management |
+| builts_int.c | Funcions built ints |
+| ctrlc.c | Control c function |
+| free_double.c | Free to double pointers |
+| find_path.c | Looks for the PATH |
+| AUTHORS | Creators |
+| man_1_simple_shell | Manual |
 ## Authors
 Facundo Diaz and Cecilia Giudice
 
