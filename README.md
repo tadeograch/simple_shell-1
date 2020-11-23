@@ -12,7 +12,19 @@ On most Linux systems a program called bash (which stands for Bourne Again SHell
 
 ## How to use
 
-
+## File contents
+|   **File**   |   **Description**   |
+| -------------- | --------------------- |
+| main.c | the main function |
+| holberton.h | header file |
+| functions.c | functions generals |
+| aux_funcs.c | string management |
+| builts_int.c | funcions built ints |
+| ctrlc.c | control c function |
+| free_double.c | free to double pointers |
+| find_path.c | looks for the PATH |
+| AUTHORS | creators |
+| man_1_simple_shell | manual |
 ## Authors
 Facundo Diaz and Cecilia Giudice
 
