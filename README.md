@@ -12,6 +12,19 @@ On most Linux systems a program called bash (which stands for Bourne Again SHell
 
 ## How to use
 
+Then you can start inserting commands followed by an enter, as the examples below indicate
+
+```
+<3 ls -lah
+<3 /bin/ls
+<3 pwd
+<3 mkdir hola
+<3 cd hola
+<3 cd ..
+<3 rmdir hola
+```
+To finish using our shell, you must insert the command "exit"
+
 ## File contents
 |   **File**   |   **Description**   |
 | -------------- | --------------------- |
