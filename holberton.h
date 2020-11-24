@@ -43,4 +43,5 @@ int _strcmp(char *s1, char *s2);
 void free_double(char **ptr);
 char *_strcpy(char *dest, char *src);
 int _strncmp(char *s1, char *s2, int len);
+void print_error(char *str, char *error);
 #endif

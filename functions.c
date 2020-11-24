@@ -107,8 +107,7 @@ char *getpath_4(char *str, char **env)
 		}
 		tkn = strtok(NULL, ":");
 	}
-	write(STDOUT_FILENO, str, _strlen(str));
-	write(STDOUT_FILENO, ": command not found\n", 20);
+	print_error(str, "command not found");
 	free(tkn);
 	free(path);
 	free(str);
@@ -136,9 +135,9 @@ void execute_5(char *path, char **args, char **env)
 			{
 				if (execve(path, args, env) == -1)
 				{
+					print_error(path, "No such file or directory");
 					free(args);
-					free(path);
-					perror("");	
+					free(path);	
 					exit(0);
 				}
 			}
