@@ -49,22 +49,27 @@ char *str_concat(char *s1, char *s2)
  *
  * Return: Always 0 (Success)
  */
-int _strcmp(char *s1, char *s2)
+int _strcmp(char s1[], char s2[] )
 {
-	int i;
-
-	for (i = 0; s1[i] != '\0'; i++)
-	{
-		if (s1[i] == s2[i])
-		{
-			continue;
-		}
-		else
-		{
-			return (s1[i] - s2[i]);
-		}
-	}
-	return (0);
+    int i = 0;
+    int flag = 0;    
+    while (flag == 0)
+    {
+        if (s1[i] > s2[i])
+        {
+            flag = 1;
+        }
+        else if (s1[i] < s2[i])
+        {
+            flag = -1;
+        }
+        if (s1[i] == '\0')
+        {
+            break;
+        }
+        i++;
+    }
+    return flag;
 }
 
 /**

@@ -7,7 +7,7 @@
 */
 int find_built_in_3(char **args, char **env, char *buffer)
 {
-	int comp, i = 0;
+	int i = 0;
 
 	built_in functions[] = {
 		{"exit", fexit},
@@ -18,8 +18,7 @@ int find_built_in_3(char **args, char **env, char *buffer)
 	};
 	while (functions[i].name != NULL)
 	{
-		comp = _strcmp(args[0], functions[i].name);
-		if (comp == 0)
+		if (_strcmp(args[0], functions[i].name) == 0)
 		{
 			if (functions[i].f(args, env, buffer) == -1)
 			{
