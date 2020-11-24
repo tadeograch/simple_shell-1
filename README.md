@@ -42,6 +42,16 @@ To finish using our shell, you must insert the command "exit"
 | find_path.c | Looks for the PATH |
 | AUTHORS | Creators |
 | man_1_simple_shell | Manual |
+
+## Libraries included in this project
+- stdio.h
+- string.h
+- stdlib.h
+- sys/types.h
+- sys/wait.h
+- sys/stat.h
+- unistd.h
+
 ## Authors
 Facundo Diaz and Cecilia Giudice
 
