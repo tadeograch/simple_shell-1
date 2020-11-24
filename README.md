@@ -44,6 +44,7 @@ To finish using our shell, you must insert the command "exit"
 | man_1_simple_shell | Manual |
 
 ## Libraries included in this project
+-------------------
 | stdio.h |
 | string.h |
 | stdlib.h |
