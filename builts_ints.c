@@ -63,6 +63,7 @@ int fhelp(char **args, char **env)
 int fexit(char **args, char **env)
 {
 	(void)env;
+
 	free_double(args);
 	exit(0);
 }
