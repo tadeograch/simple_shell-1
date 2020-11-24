@@ -5,7 +5,7 @@
 * @env: environment variables
 * Return: result 0 or -1
 */
-int find_built_in_3(char **args, char **env)
+int find_built_in_3(char **args, char **env, char *buffer)
 {
 	int comp, i = 0;
 
@@ -21,7 +21,7 @@ int find_built_in_3(char **args, char **env)
 		comp = _strcmp(args[0], functions[i].name);
 		if (comp == 0)
 		{
-			if (functions[i].f(args, env) == -1)
+			if (functions[i].f(args, env, buffer) == -1)
 			{
 				return (-1);
 			}
@@ -40,7 +40,7 @@ int find_built_in_3(char **args, char **env)
 * @env: environment variables
 * Return: result 0 or -1
 */
-int fhelp(char **args, char **env)
+int fhelp(char **args, char **env, char *buffer)
 {
 	(void)env;
 	if (args[1] != NULL)
@@ -51,6 +51,7 @@ int fhelp(char **args, char **env)
 		}
 		printf("a!\n");
 	}
+	free(buffer);
 	printf("HELP!\n");
 	return (0);
 }
@@ -60,11 +61,12 @@ int fhelp(char **args, char **env)
 * @env: environment variables
 * Return: result...
 */
-int fexit(char **args, char **env)
+int fexit(char **args, char **env, char *buffer)
 {
 	(void)env;
 
-	free_double(args);
+	free(buffer);
+	free(args);
 	exit(0);
 }
 /**
@@ -73,7 +75,7 @@ int fexit(char **args, char **env)
 * @env: environment variables
 * Return: result 0
 */
-int fcd(char **args, char **env)
+int fcd(char **args, char **env, char *buffer)
 {
 	char *path = "HOME=";
 	char *tmp = NULL;
@@ -114,6 +116,7 @@ int fcd(char **args, char **env)
 			perror("");
 		}
 	}
+		free(buffer);
 		free(args);
 		return (0);
 }

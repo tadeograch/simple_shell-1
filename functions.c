@@ -53,7 +53,8 @@ char **split_line_2(char *buffer)
 	token = strtok(buffer, " ");
 	while (token != NULL)
 	{
-		tokens[i] = token;
+		if(_strcmp(token, " ") != 0)
+			tokens[i] = token;
 		i++;
 		if (i >= bufsize)
 		{
@@ -110,7 +111,6 @@ char *getpath_4(char *str, char **env)
 	print_error(str, "command not found");
 	free(tkn);
 	free(path);
-	free(str);
 	return (NULL);
 }
 

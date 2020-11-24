@@ -16,7 +16,7 @@ int main(int ac, char **av, char **env)
 	(void)av;
 
 	signal(SIGINT, controlcfun);
-	
+
 	while (1)
 	{
 		if (isatty(STDIN_FILENO))
@@ -24,11 +24,10 @@ int main(int ac, char **av, char **env)
 			prompt_0();
 		}
 		buffer = getline_1();
-		if (/*buffer[0] != ' ' && */buffer[0] != '\0')
+		if (space_check(buffer) != 0 && buffer[0] != '\0')
 		{
-			buffer = spaces(buffer);
 			args = split_line_2(buffer);
-			built_in = find_built_in_3(args, env);
+			built_in = find_built_in_3(args, env, buffer);
 			if (built_in == 0)
 			{
 				continue;
@@ -38,6 +37,7 @@ int main(int ac, char **av, char **env)
 				path = getpath_4(args[0], env);
 				if (path == NULL)
 				{
+					free(buffer);
 					free(args);
 					continue;
 				}
@@ -46,7 +46,7 @@ int main(int ac, char **av, char **env)
 			}
 			else
 			{
-				if(dir_check(args[0]) == 1)
+				if (dir_check(args[0]) == 1)
 				{
 					free(buffer);
 					free(args);
@@ -64,18 +64,4 @@ int main(int ac, char **av, char **env)
 		}
 	}
 	return (0);
-}
-
-char* spaces(char* buffer)
-{
-	int i, cont = 0;
-
-	for (i = 0; buffer[i] != '\0'; i++)
-	{
-		if (buffer[i] == ' ')
-		{
-			cont++;
-		}
-	}
-	return(buffer + cont);
 }

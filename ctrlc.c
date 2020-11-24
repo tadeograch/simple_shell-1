@@ -20,7 +20,7 @@ void controlcfun(int a)
  *
  * Return: 0
  */
-int fenv(char **args, char **env)
+int fenv(char **args, char **env, char *buffer)
 {
 	int i, len = 0;
 
@@ -30,6 +30,7 @@ int fenv(char **args, char **env)
 		write(1, env[i], len);
 		write(1, "\n", 1);
 	}
-	free_double(args);
+	free(buffer);
+	free(args);
 	return (0);
 }
