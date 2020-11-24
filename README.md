@@ -44,13 +44,13 @@ To finish using our shell, you must insert the command "exit"
 | man_1_simple_shell | Manual |
 
 ## Libraries included in this project
-|stdio.h
-|string.h
-|stdlib.h
-|sys/types.h
-|sys/wait.h
-|sys/stat.h
-|unistd.h
+| stdio.h |
+| string.h |
+| stdlib.h |
+| sys/types.h |
+| sys/wait.h |
+| sys/stat.h |
+| unistd.h |
 
 ## Authors
 Facundo Diaz and Cecilia Giudice
