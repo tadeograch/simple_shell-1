@@ -24,8 +24,9 @@ int main(int ac, char **av, char **env)
 			prompt_0();
 		}
 		buffer = getline_1();
-		if (buffer[0] != ' ' && buffer[0] != '\0')
+		if (/*buffer[0] != ' ' && */buffer[0] != '\0')
 		{
+			buffer = spaces(buffer);
 			args = split_line_2(buffer);
 			built_in = find_built_in_3(args, env);
 			if (built_in == 0)
@@ -63,4 +64,18 @@ int main(int ac, char **av, char **env)
 		}
 	}
 	return (0);
+}
+
+char* spaces(char* buffer)
+{
+	int i, cont = 0;
+
+	for (i = 0; buffer[i] != '\0'; i++)
+	{
+		if (buffer[i] == ' ')
+		{
+			cont++;
+		}
+	}
+	return(buffer + cont);
 }
