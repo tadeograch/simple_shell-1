@@ -45,6 +45,12 @@ int main(int ac, char **av, char **env)
 			}
 			else
 			{
+				if(dir_check(args[0]) == 1)
+				{
+					free(buffer);
+					free(args);
+					continue;
+				}
 				path = args[0];
 				execute_5(path, args, env);
 			}
