@@ -1,12 +1,10 @@
 #include "holberton.h"
-
 /**
  * str_concat - concatenates two strings.
- * @s1: string 1
+ * @s1:  string 1
  * @s2: string 2
  * Return: pointer to str.
  */
-
 char *str_concat(char *s1, char *s2)
 {
 	char *str;
@@ -49,27 +47,28 @@ char *str_concat(char *s1, char *s2)
  *
  * Return: Always 0 (Success)
  */
-int _strcmp(char s1[], char s2[] )
+int _strcmp(char s1[], char s2[])
 {
-    int i = 0;
-    int flag = 0;    
-    while (flag == 0)
-    {
-        if (s1[i] > s2[i])
-        {
-            flag = 1;
-        }
-        else if (s1[i] < s2[i])
-        {
-            flag = -1;
-        }
-        if (s1[i] == '\0')
-        {
-            break;
-        }
-        i++;
-    }
-    return flag;
+	int i = 0;
+	int flag = 0;
+
+	while (flag == 0)
+	{
+		if (s1[i] > s2[i])
+		{
+			flag = 1;
+		}
+		else if (s1[i] < s2[i])
+		{
+			flag = -1;
+		}
+		if (s1[i] == '\0')
+		{
+			break;
+		}
+		i++;
+	}
+	return (flag);
 }
 
 /**

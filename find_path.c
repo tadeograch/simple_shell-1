@@ -1,36 +1,9 @@
 #include "holberton.h"
-
 /**
 * find_path - search value of variable PATH
 * @env: environ received
 * Return: value of variable PATH
 */
-/*char *find_path(char **env)
-{
-	char *path = NULL;
-	char *tmp = NULL;
-	int i = 0, j = 0;
-
-	path = "PATH=";
-	for (i = 0; env[i] != NULL; i++)
-	{
-		for (j = 0; j < 5; j++)
-		{
-			if (path[j] != env[i][j])
-				break;
-		}
-		if (j == 5)
-			break;
-	}
-	tmp = malloc(_strlen(env[i]) + 1);
-	if (tmp != NULL)
-	{
-		tmp = _strcpy(tmp, env[i]);
-		return (tmp);
-	}
-	return (NULL);
-}*/
-
 char *find_path(char **env)
 {
 	char *path = NULL, *tmp = NULL;
@@ -54,7 +27,13 @@ char *find_path(char **env)
 	return (NULL);
 
 }
-
+/**
+* _strncmp - function to compare the first n characters of two strings
+* @s1: string 1
+* @s2: string 2
+* @len: n characters to compare
+* Return: value of variable PATH
+*/
 int _strncmp(char *s1, char *s2, int len)
 {
 	int a = 0;

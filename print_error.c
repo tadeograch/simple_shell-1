@@ -8,8 +8,8 @@
 */
 void print_error(char *str, char *error)
 {
-    write(STDOUT_FILENO, str, _strlen(str));
-    write(STDOUT_FILENO, ": ", 2);
+	write(STDOUT_FILENO, str, _strlen(str));
+	write(STDOUT_FILENO, ": ", 2);
 	write(STDOUT_FILENO, error, _strlen(error));
-    write(STDOUT_FILENO, "\n", 1);
+	write(STDOUT_FILENO, "\n", 1);
 }

@@ -17,6 +17,7 @@ void controlcfun(int a)
  * fenv - function that finds specific command
  * @args: user input
  * @env: environment variables
+ * @buffer: user buffer.
  *
  * Return: 0
  */

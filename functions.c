@@ -26,7 +26,7 @@ char *getline_1()
 		if (len == EOF)
 		{
 			free(buffer);
-			exit (0);
+			exit(0);
 		}
 		perror("");
 	}
@@ -53,7 +53,7 @@ char **split_line_2(char *buffer)
 	token = strtok(buffer, " ");
 	while (token != NULL)
 	{
-		if(_strcmp(token, " ") != 0)
+		if (_strcmp(token, " ") != 0)
 			tokens[i] = token;
 		i++;
 		if (i >= bufsize)
@@ -137,7 +137,7 @@ void execute_5(char *path, char **args, char **env)
 				{
 					print_error(path, "No such file or directory");
 					free(args);
-					free(path);	
+					free(path);
 					exit(0);
 				}
 			}
