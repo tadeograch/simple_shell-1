@@ -32,29 +32,8 @@ int main(int ac, char **av, char **env)
 			{
 				continue;
 			}
-			if (args[0][0] != '/' && args[0][0] != '.')
-			{
-				path = getpath_4(args[0], env);
-				if (path == NULL)
-				{
-					free(buffer);
-					free(args);
-					continue;
-				}
-				execute_5(path, args, env);
-				free(path);
-			}
-			else
-			{
-				if (dir_check(args[0]) == 1)
-				{
-					free(buffer);
-					free(args);
-					continue;
-				}
-				path = args[0];
-				execute_5(path, args, env);
-			}
+			if (main_extension(args, path, buffer, env) == 1)
+				continue;
 			free(buffer);
 		}
 		else
@@ -62,6 +41,42 @@ int main(int ac, char **av, char **env)
 			free(buffer);
 			continue;
 		}
+	}
+	return (0);
+}
+
+/**
+ * main_extension - extension for the main function
+ * @args: arguments from the main
+ * @path: command path
+ * @buffer: user buffer
+ * @env: environment variables
+ * Return: 0 on succes, 1 on failure.
+ */
+int main_extension(char **args, char *path, char *buffer, char **env)
+{
+	if (args[0][0] != '/' && args[0][0] != '.')
+	{
+		path = getpath_4(args[0], env);
+		if (path == NULL)
+		{
+			free(buffer);
+			free(args);
+			return (1);
+		}
+		execute_5(path, args, env);
+		free(path);
+	}
+	else
+	{
+		if (dir_check(args[0]) == 1)
+		{
+			free(buffer);
+			free(args);
+			return (1);
+		}
+		path = args[0];
+		execute_5(path, args, env);
 	}
 	return (0);
 }
