@@ -103,11 +103,11 @@ char *getpath_4(char *str, char **env)
 			free(path);
 			return (cat);
 		}
-		else
+		/*else
 		{
 			free(tkn);
 			free(cat);
-		}
+		}*/
 		tkn = strtok(NULL, ":");
 	}
 	print_error(str, "command not found");

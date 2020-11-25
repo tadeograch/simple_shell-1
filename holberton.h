@@ -29,7 +29,7 @@ char  *getline_1();
 char **split_line_2(char *buffer);
 int find_built_in_3(char **args, char **env, char *buffer);
 char *getpath_4(char *str, char **env);
-void execute_5 (char *path, char **args, char **env);
+void execute_5(char *path, char **args, char **env);
 int main_extension(char **args, char *path, char *buffer, char **env);
 
 void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size);
@@ -46,6 +46,6 @@ int space_check(char *buffer);
 char *_strcpy(char *dest, char *src);
 int _strncmp(char *s1, char *s2, int len);
 void print_error(char *str, char *error);
-int dir_check (char *dir_name);
-char* spaces(char* buffer);
+int dir_check(char *dir_name);
+char *spaces(char *buffer);
 #endif
