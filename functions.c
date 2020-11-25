@@ -89,11 +89,13 @@ char *getpath_4(char *str, char **env)
 	struct stat st;
 
 	path = find_path(env);
-	tkn = strtok(path, ":");
+	strtok(path, "=");
+	tkn = strtok(NULL, ":");
 	while (tkn != NULL)
 	{
 		tkn = str_concat(tkn, barra);
 		cat = str_concat(tkn, str);
+		printf("cat: %s\n", cat);
 		res = stat(cat, &st);
 		if (res == 0)
 		{

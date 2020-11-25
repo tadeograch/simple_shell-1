@@ -55,7 +55,9 @@ int main(int ac, char **av, char **env)
  */
 int main_extension(char **args, char *path, char *buffer, char **env)
 {
-	if (args[0][0] != '/' && args[0][0] != '.')
+	struct stat st;
+
+	if (stat(args[0], &st) != 0/*args[0][0] != '/' && args[0][0] != '.'*/)
 	{
 		path = getpath_4(args[0], env);
 		if (path == NULL)
