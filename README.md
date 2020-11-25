@@ -1,6 +1,6 @@
 # Simple_shell project - Holberton School - COHORTE 13 - NOVEMBER 2020
 
-## Task description 
+## Task description
 
 Write a simple UNIX command interpreter.
 
