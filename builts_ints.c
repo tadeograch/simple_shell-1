@@ -68,7 +68,11 @@ int fexit(char **args, char **env, char *buffer)
 	(void)env;
 	int a = 0;
 
-	a = atoi(args[1]);
+	if (args[1] != NULL)
+	{
+		a = atoi(args[1]);
+	}
+
 	free(buffer);
 	free(args);
 	exit(a);
