@@ -66,10 +66,12 @@ int fhelp(char **args, char **env, char *buffer)
 int fexit(char **args, char **env, char *buffer)
 {
 	(void)env;
+	int a = 0;
 
+	a = atoi(args[1]);
 	free(buffer);
 	free(args);
-	exit(0);
+	exit(a);
 }
 /**
 * fcd - command cd function
